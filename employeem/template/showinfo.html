@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% block title %} Employee Information{% endblock title %}{%block si%}active{%endblock si%} {% block body %}
+<div class="container">
+    <div class='row'>
+        <div class="col-sm-10">
+            <div class="container py-5 md-5 ">
+
+                <h3 class="text-center alert alert-info mb-5">Employee Info List</h3>
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Post</th>
+                            <th scope="col">BloodGroup</th>
+                        </tr>
+                    </thead>
+                    {% for semph in semp %}
+                    <tbody>
+                        <td>{{semph.name}}</td>
+                        <td>{{semph.email}}</td>
+                        <td>{{semph.post}}</td>
+                        <td>{{semph.bloodgroup}}</td>
+
+                        <td>
+                            </form>
+                        </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+
+
+
+                </table>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{%endblock body%} {% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">EmployeeID Card </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {%block home%}active{%endblock home%}">
+                <a class="nav-link" href="{%url 'home'%}">Home <span class="sr-only"></span></a>
+
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{%url 'home'%}">Genrate QR Code <span class="sr-only"></span></a>
+
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav mr-2">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/logout">Logout</a>
+
+                </div>
+            </li>
+        </ul>
+
+
+        <form class="form-inline my-2 my-lg-0">
+
+            <style>
+                .footer {
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: black;
+                    color: white;
+                    text-align: center;
+                }
+            </style>
+
+            <div class="footer">
+                <p>QR Code</p>
+            </div>
+        </form>
+    </div>
+</nav>
+
+
+
+{% endblock nav %}

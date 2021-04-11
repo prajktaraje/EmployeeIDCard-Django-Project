@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block title %} Home{% endblock title %} {% block body %}{%load static%}
+
+<div class="row mx-5 mt-5">
+    <div class="container">
+        <h3 class="text-center alert alert-info">Your Qr Code is:</h3>
+
+        <div id="ans_div">
+        </div>
+        <div id="QR">
+
+            <center>
+
+                <h1>{{name}} your QR Code is stored at static/image/{{name}}.png</h1>
+                <img src="{% with 'image/'|add:name|add:'.png' as image_static %} {% static image_static %} {% endwith %}" alt="No Image">
+                </br>
+                </br>
+            </center>
+            <!-- {% with 'image/'|add:name|add:'.gif' as image_static %} {% static image_static %} {% endwith %} -->
+            </center>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{%endblock body%} {% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">EmployeeID Card </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {%block home%}active{%endblock home%}">
+                <a class="nav-link" href="{%url 'home'%}">Home <span class="sr-only"></span></a>
+
+            </li>
+            <li class="nav-item {%block si%}{%endblock si%}">
+                <a class="nav-link" href="{%url 'showinfo'%}">Show Employee Info</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav mr-2">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/logout">Logout</a>
+
+                </div>
+            </li>
+        </ul>
+
+
+        <form class="form-inline my-2 my-lg-0">
+
+            <style>
+                .footer {
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: black;
+                    color: white;
+                    text-align: center;
+                }
+            </style>
+
+            <div class="footer">
+                <p>QR Code</p>
+            </div>
+        </form>
+    </div>
+</nav>
+
+
+
+{% endblock nav %}
